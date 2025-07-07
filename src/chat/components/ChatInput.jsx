@@ -54,24 +54,26 @@ export default function ChatInput({id}){
                 navigate('/'+data.id_conv)
             }
         })
-        // .catch(err=>{
-        //     toast.error('une erreur est survenue')
-        // })
+        .catch(err=>{
+            toast.error('une erreur est survenue')
+        })
     }
     return(
         <div className={classes.input}>
-            <form className={classes.form} onSubmit={()=>{
+            <form className={classes.form} onSubmit={(e)=>{
                 if(message!==""){
                     sendMessage();
+                }else{
+                    e.preventDefault();
                 }
                 }}>
                 <textarea  type="text" className={classes.textarea} onChange={(e) => setMessage(e.target.value)}
                     onKeyDown={(e) => {
                         if (e.key === 'Enter' && !e.shiftKey) {
                         e.preventDefault();
-                        if(message!==""){
-                            sendMessage(e);
-                        }
+                            if(message!==""){
+                                sendMessage(e);
+                            }
                         }
                     }}></textarea>
                 <div>

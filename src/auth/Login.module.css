@@ -15,13 +15,4 @@
         box-sizing: border-box;
     }
 }
-form{
-    justify-self: center;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5em;
-    margin-bottom: 0.83em;
-    width: 100%;
-    box-sizing: border-box;
-}
 

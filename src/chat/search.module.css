@@ -6,6 +6,8 @@
     gap: 10px;
     justify-content: center;
     padding: 10px;
+    max-width: 900px;
+    box-sizing: border-box;
 }
 .btn{
     width: fit-content;
