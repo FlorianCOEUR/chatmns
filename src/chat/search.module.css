@@ -1,0 +1,33 @@
+
+.users{
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    padding: 10px;
+}
+.btn{
+    width: fit-content;
+    align-self: center;
+}
+.form{
+    padding:10px;
+}
+.form input[type="text"]{
+    padding:5px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    width: 100%;
+}
+.roles{
+    display: flex;
+    gap: 10px;
+    justify-content: space-around;
+}
+.roles div{
+    width: fit-content;
+}
+
+@media (min-width : 768px){
+}

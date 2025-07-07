@@ -1,0 +1,40 @@
+.input{
+    background-color: var(--blue-color);
+    width: 100%;
+    height: fit-content;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.form{
+    width: 100%;
+    max-width: 600px;
+    height: fit-content;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 20px;
+    background-color: white;
+    box-sizing: border-box;
+    align-items: center;
+}
+.textarea{
+    width: 100%;
+    resize:none;
+    overflow-y: auto;
+    border:none;
+    outline: none;
+    border-radius: 20px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+.input button{
+    border: none;
+    background-color: transparent;
+    height: 40px;
+    width: auto;
+}
+.input button img{
+    height: 20px;
+    width: auto;
+}

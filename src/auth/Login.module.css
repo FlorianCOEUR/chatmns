@@ -1,0 +1,27 @@
+
+@import '../index.css';
+
+.login{
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    box-shadow: 0 0px 5px rgba(0,0,0,0.5);
+
+
+    label, input{
+        display: block;
+        padding: 10px 5px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+form{
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    margin-bottom: 0.83em;
+    width: 100%;
+    box-sizing: border-box;
+}
+

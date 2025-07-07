@@ -1,0 +1,19 @@
+
+.user{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: rgb(20, 26, 54);
+    padding: 5px 10px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    width: 250px;
+    justify-content: space-between;
+}
+.user p{
+    color: white;
+}
+.button{
+    background-color: transparent;
+    border: none;
+}

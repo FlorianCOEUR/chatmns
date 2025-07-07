@@ -1,0 +1,15 @@
+import { useNavigate } from "react-router";
+import AngleLeft from "./icon/AngleLeft";
+
+
+export default function HeaderPge({title}){
+    const navigate=useNavigate();
+    return (
+        <div className="header">
+            <AngleLeft className="fa-orange tab-only" onClick={()=>{
+                console.log('je ferme');
+                navigate('/')}}/>
+            <h2>{title}</h2>
+        </div>
+    )
+}
