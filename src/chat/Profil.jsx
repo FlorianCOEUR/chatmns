@@ -1,11 +1,14 @@
+import { useState } from 'react';
+import HeaderPge from './components/HeaderPge';
 import classes from './window.module.css';
+import ProfilForm from './components/ProfilForm';
 
 export default function Profil(){
-
+ 
     return(
-        <div className={classes.window}>
-            <h2>mon profil</h2>
-            <textarea name="" id=""></textarea>
+        <div className="container">
+            <HeaderPge title="Profil" />
+            <ProfilForm />
 
         </div>
     )

@@ -1,0 +1,7 @@
+.role{
+    margin:auto;
+    padding: 4px 7px;
+    border-radius: 40px;
+    box-shadow: 0 2px 4px var(--blue-color);
+    user-select: none;
+}

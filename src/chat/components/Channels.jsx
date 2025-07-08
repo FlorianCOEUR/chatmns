@@ -26,7 +26,8 @@ export default function Channels(){
                 {[1, 2].includes(context.data.user.id_role) && <Link to="/channels/new" ><FontAwesomeIcon icon={faComments} size="lg" style={{color: "#fe4310",}} /> </Link>}
             </div>
             <ul>
-                {channels && channels.map(channel=>(
+                {channels && channels.filter(channel=>channel)
+                .map(channel=>(
                     <Channel 
                     key={channel.id_conv} 
                     id={channel.id_conv} 

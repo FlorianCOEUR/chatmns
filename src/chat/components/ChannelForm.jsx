@@ -7,43 +7,50 @@ import FaXMark from "./icon/FAxMark";
 import FaPlus from "./icon/FaPlus";
 import { api } from "../../lib/api";
 import useAuth from "../../context/useAuth";
+import sendMessage from "../../utils/sendMessage";
+import useSendMessage from "../../utils/sendMessage";
+import { useNavigate } from "react-router";
 
 
 export default function ChannelForm() {
     const [name, setName]=useState("");
     const [avatar, setAvatar]=useState(null);
     const [message, setMessage]=useState("");
-    const [participants, setparticipants]=useState([]);
     const [searchUsers, setSearchUsers]=useState([]);
     const auth=useAuth();
+    const [participants, setparticipants]=useState([{id_users:auth.data.user.id}]);
+    const sendMessage= useSendMessage();
+    const navigate=useNavigate();
     const handleSubmitForm= (e)=>{
         e.preventDefault();
-        if(participants.length===0){
+        if(participants.length===1){
             if(!confirm("Voulez vous créer un groupe sans participants ?")){
                 return;
             }
-            const formData=new FormData();
-            formData.append("name", name);
-            formData.append("message", message);
-            formData.append("avatar", avatar);
-            formData.append("participants", JSON.stringify(participants));
-            console.log(avatar);
-            fetch(api+"conv/create.php",{
-                method: "POST",
-                headers:{
-                    Authorization: `Bearer ${auth.data.jwt}`,
-                },
-                body: formData
-            })
-            .then(response=>response.json())
-            .then(data=>{
-                console.log(data);
-            })
-            .catch(err=>{
-                console.error(err);
-                toast.error("Erreur lors de la création du groupe");
-            });
         }
+        console.log("création d'un groupe")
+        const formData=new FormData();
+        formData.append("name", name);
+        formData.append("avatar", avatar);
+        formData.append("participants", JSON.stringify(participants));
+        fetch(api+"conv/create.php",{
+            method: "POST",
+            headers:{
+                Authorization: `Bearer ${auth.data.jwt}`,
+            },
+            body: formData
+        })
+        .then(response=>response.json())
+        .then(data=>{
+            console.log(data);
+            toast.success("Groupe créé avec succès");
+            sendMessage(data.id_conv, message, participants);
+            navigate('/'+data.id_conv)
+        })
+        .catch(err=>{
+            console.error(err);
+            toast.error("Erreur lors de la création du groupe");
+        });
     }
     const deleteParticipants=(id)=>{
         const index=participants.findIndex((user)=>String(user.id_users)===String(id));
@@ -59,6 +66,8 @@ export default function ChannelForm() {
             setSearchUsers(searchUsers.filter((user)=>String(user.id_users)!==String(id)));
         }
     }
+    console.log(participants);
+    console.log(auth.data.user.id);
     return (
         <>
             <form className={classes.form} onSubmit={(e)=>{handleSubmitForm(e)}}>
@@ -93,7 +102,8 @@ export default function ChannelForm() {
                     <legend>Ajout d'utilisateurs</legend>
                         {(participants.length>0) &&
                         <ul className={classes.ul}>
-                            {participants.map((user)=>{
+                            {participants.filter((user)=>String(user.id_users)!==String(auth.data.user.id))
+                            .map((user)=>{
                                 return(
                                     <li key={user.id}>
                                         <p>{user.user_nom+" "+user.user_prenom}</p>

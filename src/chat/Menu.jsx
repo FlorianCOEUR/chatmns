@@ -33,6 +33,7 @@ export default function Menu(){
             <div className={classes.menu_chat_head}>
                 <nav ref={menuRef}>
                     <img 
+                    className='avatar'
                         src={verifAvatar(context.data.user.avatar)}
                         alt="Mon avatar" onClick={()=>setIsShowed(!isShowed)}/>
                     <span className="bulle statut en_Ligne"></span>
@@ -51,7 +52,7 @@ export default function Menu(){
                     </ul>
                 </nav>
                 <div>
-                    <img src="img/aMNS_logo.png" alt="logo Access MNS" />
+                    <img src="/img/aMNS_logo.png" alt="logo Access MNS" />
                 </div>
             </div>
             <ListConv />

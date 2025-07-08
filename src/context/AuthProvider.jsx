@@ -50,6 +50,11 @@ useEffect(() => {
         const data = await response.json();
         if (data.status !== 'success') {
           setDataWithStorage(null);
+        }else{
+          setDataWithStorage({
+            jwt: data.jwt,
+            user: data.user
+          })
         }
       }
     } catch (error) {
