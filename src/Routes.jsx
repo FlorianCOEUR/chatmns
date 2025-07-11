@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router";
 import Login from "./auth/Login";
-import Chat from "./chat/chat";
+import Chat from "./chat/Chat";
 import Window from "./chat/window.jsx";
 import NewConvPrivee from "./chat/NewConvPrivee.jsx";
 import NewChannel from "./chat/page/NewChannel.jsx";
