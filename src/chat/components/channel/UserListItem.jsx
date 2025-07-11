@@ -1,4 +1,4 @@
-import FaXMark from "./../icon/FAxMark";
+import FaXMark from "./../icon/FaxMark";
 import FaPlus from "./../icon/FaPlus";
 
 export default function UserListItem({user, action= "add", onClick }){
