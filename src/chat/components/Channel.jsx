@@ -3,13 +3,19 @@ import { useEffect, useRef, useState } from 'react';
 import classes from './../menu.module.css';
 import useAuth from '../../context/useAuth';
 import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
-import { NavLink, useNavigate } from 'react-router';
+import { Link, NavLink, useNavigate } from 'react-router';
 
-export default function Channel({name, avatar, message, date, gerant, id, nb_non_lus}){
+export default function Channel({name, avatar, message, date, gerant, id, nb_non_lus, id_user}){
     const [showed, setShowed]=useState(false);
     const context=useAuth();
     const menuRef=useRef()
     const navigate=useNavigate();
+    const handleClickNav=(to, e)=>{
+        e.stopPropagation();
+        e.preventDefault();
+        navigate(to);
+        setShowed(false)
+    }
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -36,15 +42,19 @@ export default function Channel({name, avatar, message, date, gerant, id, nb_non
                                 e.stopPropagation();
                                 setShowed(!showed);
                                 }}/>
-                            <ul  style={{right: '0'}} className={`${classes.nav} ${showed ? classes.nav_show : classes.nav_hide}`}>
+                            <ul  ref={menuRef} style={{right: '0'}} className={`${classes.nav} ${showed ? classes.nav_show : classes.nav_hide}`}>
                                 {gerant
                                     ? (
                                         <>
-                                        {context.data.user.id === gerant && <li>Gérer la conversation</li>}
+                                        {context.data.user.id === gerant && <li onClick={(e)=>{
+                                            handleClickNav(`/channels/update/${id}`, e);
+                                        }}>Gérer la conversation</li>}
                                         <li>Voir les infos</li>
                                         </>
                                     )
-                                    : (<li onClick={()=>{navigate('/profil/'+id)}}>Voir le profil</li>)
+                                    : (<li onClick={(e)=>{
+                                        handleClickNav(`/profil/${id_user}`,e);
+                                    }}>Voir le profil</li>)
                                 }
                                 
                             </ul>

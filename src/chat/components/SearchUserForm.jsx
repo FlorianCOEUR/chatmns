@@ -46,7 +46,6 @@ export default function SearchUserForm({ setUsers, isForm = true }) {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setUsers(data);
       });
   };

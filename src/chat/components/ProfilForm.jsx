@@ -23,7 +23,7 @@ export default function ProfilForm(){
         formData.append("away", user.away);
         if(avatarPreview){
             formData.append('avatar', avatarPreview);
-            formData.append('avatar',avatar);
+            formData.append('old_avatar',avatar);
         }
         toast.promise(
             fetch(api+"user/update.php",{

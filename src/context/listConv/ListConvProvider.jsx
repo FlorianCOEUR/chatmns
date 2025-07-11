@@ -26,7 +26,6 @@ export default function ListConvProvider({children}){
     const [mps, setMps]=useState([]);
     const [reloadMps, setReloadMps]=useState(false)
     useEffect(()=>{
-        console.log("je reload les mps");
         fetch(api+'user/mps.php',{
             method: 'POST',
             headers: {

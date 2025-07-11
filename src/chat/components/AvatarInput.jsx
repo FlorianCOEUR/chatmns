@@ -1,14 +1,13 @@
 import verifAvatar from "../../utils/verifAvatar";
+import Avatar from "./Avatar";
 
 
 export default function AvatarInput({avatar, setAvatar, name, avatarPreview}){
     return(
         <div style={{margin:'auto'}}>
             <label htmlFor="avatar">
-            <img
-                src={(avatarPreview) ? verifAvatar(avatarPreview) : verifAvatar(avatar)}
-                alt={`Avatar de : ${name}`}
-                className="avatar"
+            <Avatar src={(avatarPreview) ? avatarPreview : avatar}
+                name={name}
                 style={{ cursor: 'pointer' }}
             />
             </label>

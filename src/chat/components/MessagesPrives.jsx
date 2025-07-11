@@ -34,6 +34,7 @@ export default function MessagesPrivees(){
                         message={mp.message} 
                         date={mp.m_date} 
                         nb_non_lus={mp.nb_non_lus}
+                        id_user={mp.id_user}
                         />
                     ))}
             </ul>

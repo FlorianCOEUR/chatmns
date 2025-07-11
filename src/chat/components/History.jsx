@@ -17,7 +17,6 @@ export default function History(){
     },[conv, messages])
     return(
         <div className={classes.history} ref={historyRef}>
-            cocuu
             {messages.map(message=>{
                 if(message){
                     if(message.from===context.data.user.id){
