@@ -1,4 +1,4 @@
-import Menu from "./menu";
+import Menu from "./Menu";
 import classes from "./chat.module.css";
 import { Navigate, Outlet, useNavigate } from "react-router";
 import ConvProvider from './../context/conv/ConvProvider.jsx';
