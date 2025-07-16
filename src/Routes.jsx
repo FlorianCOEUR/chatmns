@@ -8,10 +8,15 @@ import Search from "./chat/Search.jsx";
 import MyProfil from "./chat/MyProfil.jsx";
 import Profil from "./chat/page/Profil.jsx";
 import UpdateChannel from "./chat/page/UpdateChannel.jsx";
+import Auth from "./auth/Auth.jsx";
+import Register from "./auth/Register.jsx";
 export default function AppRoutes() {
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
+      <Route path="/auth" element={<Auth />}>
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+      </Route>
       <Route path="/" element={<Chat />}>
         <Route path=":id" element={<Window />} />
         <Route path="profil" element={<MyProfil />} />

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import classes from './Login.module.css'; // Assurez-vous que le fichier CSS est importé
+import classes from './auth.module.css'; 
 import HeaderLogin from './HeaderLogin';
 import toast from 'react-hot-toast';
 import useAuth from '../context/useAuth';
@@ -17,21 +17,33 @@ export default function Login() {
     const formData = new FormData();
     formData.append('email', email);
     formData.append('password', password);
-    const api=import.meta.env.VITE_API_URL
-    fetch(api+'user/login.php',{
-      method:'POST',
-      body:formData
-    })
-    .then(response=>response.json())
-    .then((data)=>{
-      if(data.status==='error'){
-        toast.error(data.message);
-      }else{
-        context.setData(data);
-        console.log('je vais ici!');
-        navigate('/');
+    console.log(formData.get('email'),formData.get('password'))
+    const api=import.meta.env.VITE_API_URL;
+    toast.promise(
+      fetch(api+'user/login.php',{
+        method:'POST',
+        body:formData
+      })
+      .then(async response=>{
+        const data=await response.json();
+        console.log(data.message)
+        if(!response.ok){
+            throw new Error(data.message || "Une erreur est survenue");
+        }
+        return data;
+      }),
+      {
+        loading:"Connexion en cours",
+        success:(res)=>{
+          context.setData(res);
+          navigate('/');
+          return "Connexion réussie";
+        },
+        error: (err)=>{
+            return err.message;
+        }
       }
-    })
+    )
   };
   if(context.isAuth){
     return(
@@ -40,7 +52,6 @@ export default function Login() {
   }
   return (
     <>
-      <HeaderLogin/>
       <div className={classes.login}>
         <div>
           <h2>Connexion</h2>

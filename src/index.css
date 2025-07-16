@@ -17,12 +17,6 @@ body{
   margin: 0;
   padding: 0;
   color: #333;
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
 }
 .header{
   width: 100%;
@@ -43,7 +37,9 @@ body{
   color: white;
   font-size: 1.5em;
 }
-
+.error{
+  color:red;
+}
 .button{
   color:white;
   background-color: var(--blue-color);

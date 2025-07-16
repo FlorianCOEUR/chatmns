@@ -67,22 +67,26 @@ export default function SearchUserForm({ setUsers, isForm = true }) {
         <div className={classes.roles}>
           <div>
             <input
+            id="role_all"
+              name="searchRole"
               type="radio"
               value=""
               checked={searchRole === ""}
               onChange={(e) => setSearchRole(e.target.value)}
             />
-            <label>Tous</label>
+            <label htmlFor="role_all">Tous</label>
           </div>
           {roles.map((role) => (
             <div key={role.id_role}>
               <input
+                id={`role_${role.id_role}`}
+                name="searchRole"
                 type="radio"
                 value={String(role.id_role)}
                 checked={searchRole === String(role.id_role)}
                 onChange={(e) => setSearchRole(e.target.value)}
               />
-              <label>{role.role_nom}</label>
+              <label htmlFor={`role_${role.id_role}`}>{role.role_nom}</label>
             </div>
           ))}
         </div>

@@ -6,6 +6,6 @@ export default function handleLogout() {
   const navigate=useNavigate();
   if (window.confirm("Êtes-vous sûr de vouloir vous déconnecter ?")) {
       context.setData(null);
-      navigate("/");
+      navigate("/auth/login");
     }
 }

@@ -74,7 +74,7 @@ export default function ChannelForm({channel = null, update=false, onSubmit}) {
                 })
             }}>
                 <div>
-                    <label>Nom de votre conversation</label>
+                    <label htmlFor="name">Nom de votre conversation</label>
                     <input type="text"
                     value={name}
                     onChange={(e)=>{
@@ -102,6 +102,7 @@ export default function ChannelForm({channel = null, update=false, onSubmit}) {
                             setMessage(e.target.value)
                         }}
                         id="message"
+                        name="message"
                         required
                     />
                     </div>

@@ -16,7 +16,7 @@ export default function ChatInput({id}){
                     e.preventDefault();
                 }
                 }}>
-                <textarea  type="text" className={classes.textarea} onChange={(e) => setMessage(e.target.value)}
+                <textarea name="new_message" type="text" className={classes.textarea} onChange={(e) => setMessage(e.target.value)}
                     onKeyDown={(e) => {
                         if (e.key === 'Enter' && !e.shiftKey) {
                         e.preventDefault();

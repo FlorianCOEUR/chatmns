@@ -16,7 +16,7 @@
 .form{
     padding:10px;
 }
-.form input[type="text"], form input[type="email"], form textarea{
+.form input[type="text"], .form input[type="email"], .form textarea{
     padding:5px;
     border-radius: 5px;
     box-sizing: border-box;
@@ -24,6 +24,7 @@
 }
 .roles{
     display: flex;
+    flex-direction: column;
     gap: 10px;
     justify-content: space-around;
 }
@@ -31,5 +32,8 @@
     width: fit-content;
 }
 
-@media (min-width : 768px){
+@media (min-width : 512px){
+    .roles{
+        flex-direction: row;
+    }
 }

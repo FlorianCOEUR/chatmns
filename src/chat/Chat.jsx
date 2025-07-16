@@ -13,7 +13,7 @@ export default function Chat() {
   const [conv, setConv]=useState(null);
   if(!context.isAuth){
     return (
-      <Navigate to='/login' replace />
+      <Navigate to='/auth/login' replace />
     )
   }
 

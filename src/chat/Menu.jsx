@@ -25,7 +25,7 @@ export default function Menu(){
     function handleLogout() {
         if (window.confirm("Êtes-vous sûr de vouloir vous déconnecter ?")) {
             context.setData(null);
-            navigate("/login");
+            navigate("/auth/login");
         }
     }
     return (
