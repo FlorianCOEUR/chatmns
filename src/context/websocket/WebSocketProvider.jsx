@@ -31,7 +31,6 @@ export default function WebSocketProvider({ token, children }){
             break;
 
         case "message":
-          console.log(data)
             if(data.message){
               updateListConv(data.message);
               if(convRef.current.id==data.message.id_conv){

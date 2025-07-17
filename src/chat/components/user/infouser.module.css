@@ -1,5 +1,6 @@
 .content {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 16px;
     background-color: #fff;
@@ -36,6 +37,6 @@
     border-radius: 10px;
     border: 1px solid #ccc;
     cursor: pointer;
-    max-width: 500px;
+    width: 300px;
     margin: 12px auto;
 }

@@ -17,8 +17,8 @@ export default function User({user}){
                 <p>{user.user_prenom}</p>
             </div>
             <div>
-                <StartConvButton id={user.id_users} />
-                <ToprofilButton id={user.id_users} />
+                <StartConvButton user={user} />
+                <ToprofilButton id={user.id_user} />
             </div>
         </li>
     )

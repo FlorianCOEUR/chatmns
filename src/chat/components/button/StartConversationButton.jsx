@@ -6,13 +6,13 @@ import classes from './button.module.css';
 import { api } from '../../../lib/api';
 
 
-export default function StartConvButton({id}){
+export default function StartConvButton({user}){
     const auth=useAuth();
     const {setConv}=useConv();
     const navigate=useNavigate();
-    const handleClickStartConv=(id)=>{
+    const handleClickStartConv=(user)=>{
         const formData=new FormData();
-        formData.append("id_user", id)
+        formData.append("id_user", user.id_user)
         fetch(api+"/conv/check.php",{
             method:'POST',
             headers: {
@@ -28,7 +28,7 @@ export default function StartConvButton({id}){
                 setConv({
                     name:user.user_prenom+' '+user.user_nom,
                     avatar:user.user_avatar,
-                    participants:[auth.data.user.id, user.id_users]
+                    participants:[auth.data.user.id, user.id_user]
                 });
                 navigate('/newConvPrivee');
             }
@@ -36,6 +36,6 @@ export default function StartConvButton({id}){
         })
     }
     return(
-        <button className={classes.button} onClick={()=>handleClickStartConv(id)}><CommentIcon className={"fa-orange"} /></button>
+        <button className={classes.button} onClick={()=>handleClickStartConv(user)}><CommentIcon className={"fa-orange"} /></button>
     )
 }
