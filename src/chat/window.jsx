@@ -3,12 +3,8 @@ import classes from './window.module.css';
 import useAuth from '../context/useAuth';
 import { useEffect, useRef, useState } from 'react';
 import { api } from '../lib/api';
-import verifAvatar from '../utils/verifAvatar';
 import Loading from './components/Loading';
-import AngleLeft from './components/icon/AngleLeft';
 import ChatInput from './components/ChatInput';
-import MessageSend from './components/MessageSend';
-import MessageReceive from './components/MessageReceive';
 import useConv from '../context/conv/useConv';
 import useListConv from '../context/listConv/useListConv';
 import ChatHeader from './components/ChatHeader';
@@ -19,7 +15,6 @@ export default function Window(){
     const context=useAuth();
     const {messages, setMessages, conv, setConv}=useConv();
     const {readList}=useListConv();
-    const navigate=useNavigate();
     useEffect(()=>{
         const formData=new FormData();
         formData.append('id', id);

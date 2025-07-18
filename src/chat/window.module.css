@@ -21,7 +21,7 @@
     box-sizing: border-box;
     height: 100%;
 }
-@media (min-width : 512px){
+@media (min-width : 768px){
     .window{
         position: relative;
     }

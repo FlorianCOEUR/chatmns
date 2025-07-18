@@ -10,14 +10,17 @@ import Profil from "./chat/page/Profil.jsx";
 import UpdateChannel from "./chat/page/UpdateChannel.jsx";
 import Auth from "./auth/Auth.jsx";
 import Register from "./auth/Register.jsx";
+import Accueil from "./chat/page/Accueil.jsx";
 export default function AppRoutes() {
   return (
     <Routes>
       <Route path="/auth" element={<Auth />}>
+        <Route index element={<Login />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
       </Route>
       <Route path="/" element={<Chat />}>
+        <Route index element={<Accueil />} />
         <Route path=":id" element={<Window />} />
         <Route path="profil" element={<MyProfil />} />
         <Route path="profil/:id" element={<Profil />} />

@@ -68,7 +68,7 @@ export default function Register(){
                 loading:"Enregistrement en cours",
                 success:(res)=>{
                     console.log(res);
-                    navigate('/auth/login');
+                    navigate('/auth/');
                     return "Enregistrement réussi";
                 },
                 error: (err)=>{

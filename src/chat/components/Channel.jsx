@@ -4,8 +4,9 @@ import classes from './../menu.module.css';
 import useAuth from '../../context/useAuth';
 import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import { Link, NavLink, useNavigate } from 'react-router';
+import StatutBulle from './icon/StatutBulle';
 
-export default function Channel({name, avatar, message, date, gerant, id, nb_non_lus, id_user}){
+export default function Channel({name, avatar, message, date, gerant, id, nb_non_lus, id_user, statut}){
     const [showed, setShowed]=useState(false);
     const context=useAuth();
     const menuRef=useRef()
@@ -32,6 +33,7 @@ export default function Channel({name, avatar, message, date, gerant, id, nb_non
         <li >
             <NavLink to={`/${id}`} className={`${classes.channel} `} >
                 <img className='avatar'  src={avatar} alt={`Avatar de : ${name}`} />
+                <StatutBulle statut={statut} />
                 {(nb_non_lus!==0) && <span className={"bulle "+classes.unread}>{nb_non_lus}</span>}
                 <div>
                     <div className={classes.channel_head}>

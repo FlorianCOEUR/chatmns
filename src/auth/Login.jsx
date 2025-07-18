@@ -10,7 +10,7 @@ export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const context=useAuth();
-  const navigate=useNavigate('/');
+  const navigate=useNavigate('/profil');
   const submit = (e) => {
     e.preventDefault();
 
@@ -36,7 +36,7 @@ export default function Login() {
         loading:"Connexion en cours",
         success:(res)=>{
           context.setData(res);
-          navigate('/');
+          navigate('/profil');
           return "Connexion réussie";
         },
         error: (err)=>{

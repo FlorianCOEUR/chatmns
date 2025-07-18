@@ -6,6 +6,8 @@ import useAuth from "../context/useAuth";
 import WebSocketProvider from './../context/websocket/WebSocketProvider.jsx';
 import { useState } from "react";
 import ListConvProvider from "../context/listConv/ListConvProvider.jsx";
+import { Helmet } from "react-helmet";
+
 
 export default function Chat() {
   const context=useAuth();
@@ -13,7 +15,7 @@ export default function Chat() {
   const [conv, setConv]=useState(null);
   if(!context.isAuth){
     return (
-      <Navigate to='/auth/login' replace />
+      <Navigate to='/auth/' replace />
     )
   }
 

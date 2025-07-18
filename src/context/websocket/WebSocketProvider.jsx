@@ -5,7 +5,7 @@ import useListConv from "../listConv/useListConv";
 
 export default function WebSocketProvider({ token, children }){
   const socketRef = useRef(null);
-  const {mps, updateListConv}=useListConv();
+  const {mps, updateListConv,updateMpsStatus}=useListConv();
   const {messages, setMessages, conv, setConv} = useConv();
   const convRef=useRef(conv);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -38,7 +38,9 @@ export default function WebSocketProvider({ token, children }){
               }
             }
             break;
-
+        case "status_update" : 
+            updateMpsStatus(data.id_user, data.status);
+            break;
         default:
             console.warn("Type de message inconnu:", data);
         }
@@ -59,11 +61,16 @@ export default function WebSocketProvider({ token, children }){
         socketRef.current.send(JSON.stringify({ type: "message", content }));
     }
   };
-
+  const sendStatus = (status)=>{
+    if (socketRef.current?.readyState === WebSocket.OPEN) {
+        socketRef.current.send(JSON.stringify({ type: "status", name: status }));
+    }
+  }
   const value = {
     isAuthenticated,
     messages,
     sendMessage,
+    sendStatus
   };
 
   return (

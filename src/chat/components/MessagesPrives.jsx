@@ -13,7 +13,7 @@ import Loading from "./Loading";
 
 
 export default function MessagesPrivees(){
-    const {mps}=useListConv()
+    const {mps}=useListConv();
     if(!mps)
         return (<Loading />)
     return (
@@ -35,6 +35,7 @@ export default function MessagesPrivees(){
                         date={mp.m_date} 
                         nb_non_lus={mp.nb_non_lus}
                         id_user={mp.id_user}
+                        statut={mp.id_statut}
                         />
                     ))}
             </ul>

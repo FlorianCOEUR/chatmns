@@ -6,6 +6,8 @@ import ChannelForm from "../components/channel/ChannelForm";
 import HeaderPge from "../components/HeaderPge";
 import useSendMessage from "../../utils/sendMessage";
 import { useNavigate } from "react-router";
+import { Helmet } from "react-helmet";
+import { title } from "../../lib/title";
 
 
 export default function NewChannel() {

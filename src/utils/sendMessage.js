@@ -45,6 +45,7 @@ export default function useSendMessage(){
                 },
                 participants:data.participants
             }
+            console.log(content);
             ws.sendMessage(content);
             if(id===0){
                 navigate('/'+data.id_conv)

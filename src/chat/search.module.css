@@ -32,7 +32,7 @@
     width: fit-content;
 }
 
-@media (min-width : 512px){
+@media (min-width : 768px){
     .roles{
         flex-direction: row;
     }

@@ -1,0 +1,12 @@
+.statut{
+    top:0
+}
+.online{
+    background-color: rgb(3, 202, 3);
+}
+.offline{
+    background-color: grey;
+}
+.away{
+    background-color: orange;
+}

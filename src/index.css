@@ -59,6 +59,11 @@ ul{
 nav{
   position: relative;
 }
+.imgAccueil{
+  height: inherit;
+  width: auto;
+  object-fit: cover;
+}
 .avatar{
   border-radius: 50%;
   width: 60px;
@@ -101,6 +106,9 @@ nav{
 .fa-orange path{
   fill: var(--pimary_color) !important;
 }
+.accueil{
+  display: none;
+}
 .container{
     position: absolute;
     display: flex;
@@ -127,16 +135,18 @@ form{
     width: 100%;
     box-sizing: border-box;
 }
-@media (min-width : 512px){
+@media (min-width : 768px){
   .mobile-only{
     display: none;
-  }
-}
-@media (min-width : 768px){
-    .container{
+  }    
+  .container{
       position: relative;
-    }
-  .tab-only{
-    display: none;
+  }
+  .accueil{
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
   }
 }

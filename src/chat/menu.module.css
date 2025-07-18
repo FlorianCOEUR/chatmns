@@ -3,6 +3,7 @@
     flex-direction: column;
     border-right: 1px solid var(--blue-color);
     width: 100%;
+    box-sizing: border-box;
 }
 .menu_chat_head{
     background-color: var(--blue-color);
@@ -102,7 +103,7 @@
     width: 100%;
 }
 
-@media (min-width : 512px){
+@media (min-width : 768px){
   .menu{
     max-width: 300px;
   }

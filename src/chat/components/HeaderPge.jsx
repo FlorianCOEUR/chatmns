@@ -7,7 +7,7 @@ export default function HeaderPge({title}){
     return (
         <div className="header">
             <div>
-                <AngleLeft className="fa-orange tab-only" onClick={()=>{
+                <AngleLeft className="fa-orange mobile-only" onClick={()=>{
                     console.log('je ferme');
                     navigate('/')}}/>
                 <h2>{title}</h2>

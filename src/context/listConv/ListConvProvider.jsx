@@ -34,9 +34,12 @@ export default function ListConvProvider({children}){
         })
         .then(response=>response.json())
         .then(data=>{
+            console.log(data);
             setMps(data);
         });
     },[reloadMps]);
+
+
     function updateConversation(list, setList, newMessage, setReload){
         let newConv=false;
         setList((prevList)=>{
@@ -78,6 +81,16 @@ export default function ListConvProvider({children}){
 
         }
     }
+    //MAJ du status d'un mp
+    function updateMpsStatus(id_user, statut){
+        setMps(prev=>{
+            const updateMps = prev.map(mp=>{
+                if(!mp || !mp.id_user) return mp;
+                return String(mp.id_user) === String(id_user) ? {...mp, id_statut:statut } : mp;
+            })
+            return updateMps;
+        })
+    }
     const readConv=(setList, id_conv)=>{
         setList((prevList)=>{
             const index=prevList
@@ -106,7 +119,8 @@ export default function ListConvProvider({children}){
         mps:mps,
         setMps:setMps,
         updateListConv:updateListConv,
-        readList:readList
+        readList:readList,
+        updateMpsStatus:updateMpsStatus
     }
     return(
         <ListConvContext.Provider value={value}>
