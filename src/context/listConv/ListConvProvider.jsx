@@ -34,7 +34,6 @@ export default function ListConvProvider({children}){
         })
         .then(response=>response.json())
         .then(data=>{
-            console.log(data);
             setMps(data);
         });
     },[reloadMps]);

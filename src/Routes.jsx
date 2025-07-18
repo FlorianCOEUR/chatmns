@@ -16,7 +16,6 @@ export default function AppRoutes() {
     <Routes>
       <Route path="/auth" element={<Auth />}>
         <Route index element={<Login />} />
-        <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
       </Route>
       <Route path="/" element={<Chat />}>

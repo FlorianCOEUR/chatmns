@@ -4,6 +4,7 @@ import MessageSend from "./MessageSend"
 import classes from './history.module.css'
 import useAuth from "../../context/useAuth";
 import useConv from "../../context/conv/useConv";
+import Loading from "./Loading";
 
 export default function History(){
     const historyRef=useRef(null);
@@ -17,7 +18,7 @@ export default function History(){
     },[conv, messages])
     return(
         <div className={classes.history} ref={historyRef}>
-            {messages.map(message=>{
+            {(!messages)?<Loading/> : messages.map(message=>{
                 if(message){
                     if(message.from===context.data.user.id){
                         return <MessageSend key={message.id} message={message} />

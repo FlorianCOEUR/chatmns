@@ -39,7 +39,7 @@ export default function Window(){
             readList(data.id, data.type);
         });
     },[id]);
-    if(!conv) return <Loading/>
+    if(!conv || !messages) return <Loading/>
     return(
         <div className={classes.window} >
             <ChatHeader />
