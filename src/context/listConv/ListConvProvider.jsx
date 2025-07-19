@@ -17,10 +17,20 @@ export default function ListConvProvider({children}){
                 'Authorization': `Bearer ${auth.data.jwt}`
             },
         })
-        .then(response=>response.json())
-        .then((data)=>{
-            setChannels(data);
+        .then(async response=>{
+            const data =await response.json();
+            if(response.status===401) auth.setData(null);
+            if(!data.ok){
+                throw new Error(data.message || "Une erreur est survenue");
+            }
+            return data;
         })
+        .then(data=>{
+            setMps(data);
+        })
+        .catch(err=>{
+            console.log(err)
+        });
     },[reloadChannel])
     //Récupération de la liste des MP
     const [mps, setMps]=useState([]);

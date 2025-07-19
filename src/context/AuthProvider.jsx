@@ -8,9 +8,8 @@ export default function AuthProvider({children}){
     //Récupération du jwt dans le localstorage
   const [data, setData]=useState(()=>{
     const jwt=localStorage.getItem('jwt');
-    const user=JSON.parse(localStorage.getItem('user'));
     return{
-      user:user,
+      user:{},
       jwt:jwt
     }
   });
@@ -21,16 +20,15 @@ export default function AuthProvider({children}){
     setData(data);
     if(!data){
       localStorage.removeItem('jwt');
-      localStorage.removeItem('user');
     }else{
-      localStorage.setItem('user', JSON.stringify(data.user));
       localStorage.setItem('jwt', data.jwt);
     }
   }
 
 useEffect(() => {
+  
   async function verifyToken() {
-    if (!data || !data.jwt || !data.user) {
+    if (!data || !data.jwt) {
       setLoading(false);
       return;
     }
@@ -48,6 +46,7 @@ useEffect(() => {
         setDataWithStorage(null);
       } else {
         const data = await response.json();
+        console.log(data)
         if (data.status !== 'success') {
           setDataWithStorage(null);
         }else{
@@ -71,7 +70,7 @@ useEffect(() => {
     const value={
         data:data,
         setData:setDataWithStorage,
-        isAuth:(data!==null && data.user!==null && data.jwt!==null),
+        isAuth:(data && data.jwt),
         loading
     }
     if(loading){
