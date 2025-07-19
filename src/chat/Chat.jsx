@@ -11,8 +11,6 @@ import { Helmet } from "react-helmet";
 
 export default function Chat() {
   const context=useAuth();
-  const [messages, setMessages]=useState([]);
-  const [conv, setConv]=useState(null);
   if(!context.isAuth){
     return (
       <Navigate to='/auth/' replace />
@@ -21,7 +19,7 @@ export default function Chat() {
 
   return (
     <ListConvProvider>
-      <ConvProvider value={{messages:messages, setMessages:setMessages, conv:conv, setConv:setConv}} >
+      <ConvProvider >
         <WebSocketProvider token={context.data.jwt}>
           <div className={classes.chat}>
               <Menu />
