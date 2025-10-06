@@ -20,13 +20,11 @@ export default function ListConvProvider({children}){
         .then(async response=>{
             const data =await response.json();
             if(response.status===401) auth.setData(null);
-            if(!data.ok){
-                throw new Error(data.message || "Une erreur est survenue");
-            }
             return data;
         })
         .then(data=>{
-            setMps(data);
+            console.log(data)
+            setChannels(data);
         })
         .catch(err=>{
             console.log(err)

@@ -5,17 +5,12 @@ import AuthProvider from './context/AuthProvider.jsx';
 import AppRoutes from './Routes'
 
 export default function App() {
-
-
-
-
-
   return (
     <AuthProvider>
-          <BrowserRouter>
-            <Toaster />
-            <AppRoutes />
-          </BrowserRouter>
+      <BrowserRouter>
+        <Toaster />
+        <AppRoutes />
+      </BrowserRouter>
     </AuthProvider>
   );
 }
